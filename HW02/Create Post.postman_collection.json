@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "021ddfd8-61cd-4b14-80da-5f0f99cfb55a",
+		"name": "Create Post",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37147617",
+		"_collection_link": "https://www.postman.com/flight-cosmologist-27145935/workspace/geektest-3663/collection/37147617-021ddfd8-61cd-4b14-80da-5f0f99cfb55a?action=share&source=collection_link&creator=37147617"
+	},
+	"item": [
+		{
+			"name": "New post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token_Dummy}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Мой первый блог",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Блог тестировщика",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "Я учусь на тестировщика",
+							"type": "text"
+						},
+						{
+							"key": "isDraft",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "delayPublishTo",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{username_Dummy}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password_Dummy}}",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/GeekBrains/25_Testing_API/HW02/post1.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/posts",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"posts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token_Dummy}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/GeekBrains/25_Testing_API/HW02/post1.jpg"
+								},
+								{
+									"key": "title",
+									"value": "{{$randomProductName}}",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "{{$randomLoremText}}",
+									"type": "text"
+								},
+								{
+									"key": "isDraft",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "delayPublishTo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{username_Dummy}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password_Dummy}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://test-stand.gb.ru/gateway/posts",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"gateway",
+								"posts"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 Sep 2024 11:19:19 GMT"
+						},
+						{
+							"key": "Etag",
+							"value": "\"1ke3mdn\""
+						},
+						{
+							"key": "Content-Length",
+							"value": "392"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"item\": {\n        \"id\": 123173,\n        \"title\": \"Ergonomic Fresh Bacon\",\n        \"description\": \"\",\n        \"content\": \"Maxime impedit ab.\\r\\nEaque iste impedit et in.\",\n        \"authorId\": 40134,\n        \"mainImage\": {\n            \"id\": 68216,\n            \"cdnUrl\": \"http://test-stand.gb.ru/files/public/image/097363220e43cf5e42456794d2dfbd3d.jpg\"\n        },\n        \"updatedAt\": \"2024-09-15T11:19:19+00:00\",\n        \"createdAt\": \"2024-09-15T11:19:19+00:00\",\n        \"labels\": [],\n        \"delayPublishTo\": null,\n        \"draft\": false\n    }\n}"
+				},
+				{
+					"name": "401",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/GeekBrains/25_Testing_API/HW02/post1.jpg"
+								},
+								{
+									"key": "title",
+									"value": "{{$randomProductName}}",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "{{$randomLoremText}}",
+									"type": "text"
+								},
+								{
+									"key": "isDraft",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "delayPublishTo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{username_Dummy}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password_Dummy}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://test-stand.gb.ru/gateway/posts",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"gateway",
+								"posts"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 Sep 2024 11:36:09 GMT"
+						},
+						{
+							"key": "Etag",
+							"value": "\"139jo4e\""
+						},
+						{
+							"key": "Content-Length",
+							"value": "93"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Undefined error occurred\",\n    \"code\": 401,\n    \"message\": \"Auth header required X-Auth-Token\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login egorchik_sv",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{username_Dummy}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password_Dummy}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/login",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "username_Dummy",
+			"value": "egorchik_sv",
+			"type": "string"
+		},
+		{
+			"key": "token_Dummy",
+			"value": "95076da431c62e88ac3918662096afdf",
+			"type": "string"
+		},
+		{
+			"key": "password_Dummy",
+			"value": "61dbe320b4",
+			"type": "string"
+		}
+	]
+}
