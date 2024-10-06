@@ -1,0 +1,670 @@
+{
+	"info": {
+		"_postman_id": "97f7ac00-4e99-42aa-9af1-f802dfa7c924",
+		"name": "HW03",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37147617",
+		"_collection_link": "https://www.postman.com/flight-cosmologist-27145935/geektest-3663/collection/ldnfc8h/hw03?action=share&source=collection_link&creator=37147617"
+	},
+	"item": [
+		{
+			"name": "Login student Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"\r",
+							"pm.collectionVariables.set(\"token Student\", data.token)\r",
+							"\r",
+							"pm.test(\"Status code 200\", function() {\r",
+							"\t\tpm.expect(pm.response.code).to.eql(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response body check\", function() {\r",
+							"    pm.expect(data).not.eql(undefined)\r",
+							"    pm.expect(data.id).not.eql(undefined)\r",
+							"    pm.expect(data.username).not.eql(undefined)\r",
+							"    pm.expect(data.token).not.eql(undefined)\r",
+							"    pm.expect(data.roles).not.eql(undefined)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Id eql 25945\", function() {\r",
+							"    pm.expect(data.id).eql(25945)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Role student\", function() {\r",
+							"    var role = false\r",
+							"    data.roles.forEach(function(item) {\r",
+							"        if (item == \"R_STUDENT\")\r",
+							"            role = true\r",
+							"    })\r",
+							"    pm.expect(role).eql(true)\r",
+							"})\r",
+							"\r",
+							"data.roles.forEach((el) => console.log(el))\r",
+							"\r",
+							"data.roles.forEach(function(item) {\r",
+							"    console.log(item)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "GB2023109911715",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "2b6fe77230",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/login",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create dummy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"\r",
+							"pm.collectionVariables.set(\"username_Dummy\", data.item.username)\r",
+							"pm.collectionVariables.set(\"password_Dummy\", data.item.password)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token Student}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "",
+							"type": "file",
+							"disabled": true
+						},
+						{
+							"key": "firstName",
+							"value": "{{$randomFirstName}}",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "{{$randomLastName}}",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{$randomUserName}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "79128888888",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2022-10-01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login dummy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"\r",
+							"pm.collectionVariables.set(\"id_Dummy\", data.id)\r",
+							"pm.collectionVariables.set(\"token_Dummy\", data.token)\r",
+							"\r",
+							"pm.test(\"Status code 200\", function() {\r",
+							"\t\tpm.expect(pm.response.code).to.eql(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response body check\", function() {\r",
+							"    pm.expect(data).not.eql(undefined)\r",
+							"    pm.expect(data.id).not.eql(undefined)\r",
+							"    pm.expect(data.username).not.eql(undefined)\r",
+							"    pm.expect(data.token).not.eql(undefined)\r",
+							"    pm.expect(data.roles).not.eql(undefined)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Role student\", function() {\r",
+							"    var role = false\r",
+							"    data.roles.forEach(function(item) {\r",
+							"        if (item == \"R_DUMMY\")\r",
+							"            role = true\r",
+							"    })\r",
+							"    pm.expect(role).eql(true)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "{{username_Dummy}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password_Dummy}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/login",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"\tpm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"В ответе есть все ожидаемые поля\", function () {\r",
+							"\tpm.expect(pm.response.text()).to.include('\"id\"');\r",
+							"  pm.expect(pm.response.text()).to.include('\"firstName\"');\r",
+							"  pm.expect(pm.response.text()).to.include('\"lastName\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"username\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"phone\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"status\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"sex\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"birthDate\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"avatar\"');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token_Dummy}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{url}}/api/users/profile/{{id_Dummy}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"{{id_Dummy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get info user_with_an_unauthorized_token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function() {\r",
+							"\tpm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test('При запросе не существующего поста получаем \"error\": \"critical\"', function () {\r",
+							"\tpm.expect(pm.response.text()).to.include('\"error\":\"critical\"');\r",
+							"});\r",
+							"\r",
+							"pm.test('При запросе не существующего поста получаем \"code\": 400', function () {\r",
+							"\tpm.expect(pm.response.text()).to.include('\"code\":400');\r",
+							"});\r",
+							"\r",
+							"pm.test('При запросе не существующего поста получаем  \"message\": \"Вы запрашиваете чужого пользователя.\"', function () {\r",
+							"\tpm.expect(pm.response.text()).to.include(' \"message\":\"Вы запрашиваете чужого пользователя.\"');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "5d52fee5f24d6ecd7446bea323e12fd6",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://{{url}}/api/users/profile/{{id_Dummy}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"profile",
+						"{{id_Dummy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updates_user_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"\tpm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"В ответе есть все ожидаемые поля\", function () {\r",
+							"\tpm.expect(pm.response.text()).to.include('\"id\"');\r",
+							"  pm.expect(pm.response.text()).to.include('\"firstName\"');\r",
+							"  pm.expect(pm.response.text()).to.include('\"lastName\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"username\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"phone\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"status\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"sex\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"birthDate\"');\r",
+							"\tpm.expect(pm.response.text()).to.include('\"avatar\"');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token_Dummy}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "",
+							"type": "file",
+							"disabled": true
+						},
+						{
+							"key": "firstName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{username_Dummy}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/gateway/users/profile/{{id_Dummy}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"{{id_Dummy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updates_user_info_without_username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function() {\r",
+							"\tpm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test('В случае неуспешного ответа, в response мы получаем: \"error\": \"Неуспешная попытка создания аккаунта\"', function () {\r",
+							"\tpm.expect(pm.response.text()).to.include('\"error\":\"Неуспешная попытка создания аккаунта\"');\r",
+							"});\r",
+							"\r",
+							"pm.test('В случае неуспешного ответа, в response мы получаем: \"code\": 400', function () {\r",
+							"\tpm.expect(pm.response.text()).to.include('\"code\":400');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{token_Dummy}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "",
+							"type": "file",
+							"disabled": true
+						},
+						{
+							"key": "firstName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/gateway/users/profile/{{id_Dummy}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"gateway",
+						"users",
+						"profile",
+						"{{id_Dummy}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "login_student",
+			"value": "GB2023109911715",
+			"type": "string"
+		},
+		{
+			"key": "passowrd_student",
+			"value": "2b6fe77230",
+			"type": "string"
+		},
+		{
+			"key": "token Student",
+			"value": ""
+		},
+		{
+			"key": "username_Dummy",
+			"value": ""
+		},
+		{
+			"key": "password_Dummy",
+			"value": ""
+		},
+		{
+			"key": "id_Dummy",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token_Dummy",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
