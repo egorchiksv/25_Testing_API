@@ -1,0 +1,1323 @@
+{
+	"info": {
+		"_postman_id": "56833b1c-7fd9-4fd8-b046-63a6266ef3f2",
+		"name": "Семинар 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26756497"
+	},
+	"item": [
+		{
+			"name": "GeekBrains",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json().token; \r",
+							"pm.collectionVariables.set(\"tokenAdmin\",jsonData);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "GB202302c48fb13",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "5102ad588a",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/login",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь Birthtday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь male",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь LastName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь FirstName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь без логина",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Без Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Код3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.eql(\"validation unsuccessful\");\r",
+							"     pm.expect(jsonData.code).to.eql(400);\r",
+							"    pm.expect(jsonData.message[0].code).to.eql(3);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (7).png"
+						},
+						{
+							"key": "firstName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь не уникальный логин",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.eql(\"validation unsuccessful\");\r",
+							"     pm.expect(jsonData.code).to.eql(400);\r",
+							"    pm.expect(jsonData.message[0].code).to.eql(2);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Дата рождения",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "2020-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Неправильный пол",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "hjkjffggg",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь логин больше 20 символов",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}lffddkkkfdfggfdgfdgfd45",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь логин",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error).to.eql(\"validation unsuccessful\");\r",
+							"     pm.expect(jsonData.code).to.eql(400);\r",
+							"    pm.expect(jsonData.message[0].code).to.eql(1);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/User/Pictures/Screenshots/Снимок экрана (5).png"
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователь пустая картинка",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "firstName",
+							"value": "Roman",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Erema",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Grigo {{$randomAlphaNumeric}}",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89651104294",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "birthDate",
+							"value": "1995-05-11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://test-stand.gb.ru/gateway/dummies",
+					"protocol": "https",
+					"host": [
+						"test-stand",
+						"gb",
+						"ru"
+					],
+					"path": [
+						"gateway",
+						"dummies"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "tokenAdmin",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
